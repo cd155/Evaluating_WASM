@@ -1,0 +1,1 @@
+asc fib.ts -o fib.wasm

@@ -1,0 +1,25 @@
+<html>
+<body>
+  <script>
+    function simpleClimb(n) {
+                var a = 0
+                while (a < n) { a++;}
+                return a;
+    }
+
+    function timer(fn, input) {
+                console.time("timer");
+                fn(input);
+                console.timeEnd("timer");
+    }
+
+    fetch('climb.wasm').then(response =>
+      response.arrayBuffer()
+    ).then(bytes =>
+      WebAssembly.instantiate(bytes, {imports: {}})
+    ).then(results => {
+      window.climb = results.instance.exports.climb;
+    });
+  </script>
+</body>
+</html>
